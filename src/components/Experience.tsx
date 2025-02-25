@@ -36,8 +36,12 @@ const Experience = () => {
       ],
     },
   ];
+  interface ExperienceInfoProps {
+    number: string | number;
+    text: string;
+  }
 
-  const ExperienceInfo = ({ number, text }) => {
+  const ExperienceInfo = ({ number, text }: ExperienceInfoProps) => {
     return (
       <div className="flex flex-col justify-center items-center">
         <p className="font-bold text-6xl text-cyan">{number}</p>
@@ -45,8 +49,20 @@ const Experience = () => {
       </div>
     );
   };
-
-  const SingleExperience = ({ experience }) => {
+  interface Experience {
+    job: string;
+    company: string;
+    date: string;
+    responsibilities: string[];
+  }
+  
+  // Interface for SingleExperience Props
+  interface SingleExperienceProps {
+    experience: Experience;
+  }
+  
+  const SingleExperience = ({ experience }: SingleExperienceProps) => {
+    
     return (
       <motion.div
         variants={fadeIn("right", 0)}
@@ -59,7 +75,7 @@ const Experience = () => {
         <p className="text-orange">{experience.company}</p>
         <p className="text-lightGrey">{experience.date}</p>
         <ul className="list-disc mt-4 pl-4">
-          {experience.responsibilities.map((resp, index) => {
+          {experience.responsibilities.map((resp: string, index: number) => {
             return <li key={index}>{resp}</li>;
           })}
         </ul>
