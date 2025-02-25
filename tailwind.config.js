@@ -4,6 +4,20 @@ export default {
     content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
   theme: {
   	extend: {
+		animation: {
+			'spin-slow': 'spin-slow 8s linear infinite',  // Clockwise spin
+			'spin-reverse-slow': 'spin-reverse-slow 8s linear infinite',  // Counterclockwise spin
+		  },
+		  keyframes: {
+			'spin-slow': {
+			  '0%': { transform: 'rotate(0deg)' },
+			  '100%': { transform: 'rotate(360deg)' },
+			},
+			'spin-reverse-slow': {
+			  '0%': { transform: 'rotate(0deg)' },
+			  '100%': { transform: 'rotate(-360deg)' },
+			},
+		  },
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
